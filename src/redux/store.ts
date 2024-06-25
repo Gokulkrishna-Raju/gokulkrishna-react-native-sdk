@@ -1,7 +1,6 @@
 import {
   createSlice,
   type PayloadAction,
-  configureStore,
 } from '@reduxjs/toolkit';
 
 // Define the state interface
