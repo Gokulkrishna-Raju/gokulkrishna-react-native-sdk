@@ -1,38 +1,11 @@
 import { View, Modal, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { appSlice, updateProperty } from './redux/appSlice';
-import { configureStore } from '@reduxjs/toolkit';
-
-
-// Configure the store
-export const store = configureStore({
-  reducer: {
-    app: appSlice.reducer,
-  },
-});
-
-// Define the type for the state
-export type RootState = ReturnType<typeof store.getState>;
-
 
 export const TrackScreen = () => {
-  const dispatch = useDispatch();
-  dispatch(updateProperty({ key: 'isVisible', value: true }));
-  dispatch(updateProperty({ key: 'isCloseButtonEnabled', value: true }));
 };
 
 export const SpotCheck: React.FC = () => {
-  const dispatch = useDispatch();
-  const isVisible = useSelector((state: RootState) => state.app.isVisible);
-  const isCloseButtonEnabled = useSelector(
-    (state: RootState) => state.app.isCloseButtonEnabled
-  );
-
-  const closeModal = () => {
-    dispatch(updateProperty({ key: 'isVisible', value: false }));
-  };
 
   return (
     <View
@@ -45,7 +18,7 @@ export const SpotCheck: React.FC = () => {
         elevation: 5,
       }}
     >
-      <Modal animationType="slide" transparent={true} visible={isVisible}>
+      <Modal animationType="slide" transparent={true} visible={true}>
         <View
           style={{
             flex: 1,
@@ -65,9 +38,9 @@ export const SpotCheck: React.FC = () => {
               height: '100%',
             }}
           >
-            {isCloseButtonEnabled && (
-              <Button title="Close" onPress={closeModal} />
-            )}
+
+              <Button title="Close" onPress={() => {}} />
+            
             <WebView
               source={{ uri: 'https://reactnative.dev/' }}
               style={{ width: 200 }}
