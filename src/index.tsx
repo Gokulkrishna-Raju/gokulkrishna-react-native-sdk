@@ -3,7 +3,7 @@ import { WebView } from 'react-native-webview';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { appSlice, updateProperty } from './redux/appSlice';
-import { configureStore } from '@reduxjs/toolkit/dist/configureStore';
+import { configureStore } from '@reduxjs/toolkit';
 
 
 // Configure the store
