@@ -2,8 +2,20 @@ import { View, Modal, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProperty } from './redux/store';
-import type { RootState } from './redux/store';
+import { appSlice, updateProperty } from './redux/store';
+import { configureStore } from '@reduxjs/toolkit/dist/configureStore';
+
+
+// Configure the store
+export const store = configureStore({
+  reducer: {
+    app: appSlice.reducer,
+  },
+});
+
+// Define the type for the state
+export type RootState = ReturnType<typeof store.getState>;
+
 
 export const TrackScreen = () => {
   const dispatch = useDispatch();

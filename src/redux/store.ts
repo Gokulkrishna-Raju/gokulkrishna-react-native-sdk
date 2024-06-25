@@ -57,7 +57,7 @@ const initialState: AppState = {
 };
 
 // Create a slice
-const appSlice = createSlice({
+export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
@@ -72,15 +72,3 @@ const appSlice = createSlice({
 
 // Export the action
 export const { updateProperty } = appSlice.actions;
-
-// Configure the store
-const store = configureStore({
-  reducer: {
-    app: appSlice.reducer,
-  },
-});
-
-export default store;
-
-// Define the type for the state
-export type RootState = ReturnType<typeof store.getState>;
